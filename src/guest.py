@@ -16,5 +16,8 @@ class Guest:
     def pay_entry(self, amount):
         self.wallet -= amount.entry_fee
     
+    
+    
+    
         
         

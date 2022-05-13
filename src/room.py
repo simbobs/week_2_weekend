@@ -1,4 +1,5 @@
 from src.guest import Guest
+import random
 
 class Room:
     
@@ -28,7 +29,10 @@ class Room:
     def count_guests(self):
         return len(self._guests)
     
- 
+    # def play_song(self, songs, guests):
+    #     for guest in self._guests:
+    #         if random.choice(self._songs) == guest.fave_song():
+    #             return guest.cheer_loudly()
         
     
     

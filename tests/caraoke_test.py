@@ -28,18 +28,21 @@ class TestCaraoke(unittest.TestCase):
          self.assertEqual("Cher", self.caraoke.find_room(self.room2).name)
          
     
-    # def test_caraoke_can_update_till_total(self):
-    #     self.
-    #     self.caraoke.update_till_total(self.room)
-    
-    # def can_add_money_to_caraoke_total(self)
+    def test_caraoke_can_collect_entry_fee(self):
+        self.caraoke.add_room(self.room1)
+        self.caraoke.collect_entry_fee(self.room1)
+        self.assertEqual(3.00, self.caraoke._till_total)
+
     
     def test_can_check_in_customer_if_room_has_space(self):
+        self.caraoke.add_room(self.room1)
         self.room1.add_guest(self.guest1)
         self.caraoke.check_in_guest(self.guest2, self.room1)
         self.assertEqual(2, self.room1.count_guests())
-        self.assertEqual(3, self.room1._till)
+        self.assertEqual(3, self.caraoke._till_total)
         self.assertEqual(97, self.guest2.wallet)
+        self.assertEqual("Lorena", self.caraoke._rooms[0]._guests[1].name)
+        
         
     def test_cant_check_in_customer_if_room_is_at_capacity(self):
         guest4 = Guest("Massimo", 30.00)
@@ -50,9 +53,8 @@ class TestCaraoke(unittest.TestCase):
         self.caraoke.check_in_guest(guest4, self.room2)
         self.assertEqual(3, self.room2.count_guests())
         self.assertEqual(30.00, guest4.wallet)
-        self.assertEqual(15, self.room2._till)
+        self.assertEqual(15, self.caraoke._till_total)
     
-   
     
     def test_can_check_out_customer(self):
         self.caraoke.add_room(self.room1)

@@ -7,6 +7,9 @@ class Caraoke:
     
     def add_room(self, room):
         self._rooms.append(room)
+    
+    def collect_entry_fee(self, room):
+        self._till_total += room.entry_fee
         
     def check_in_guest(self, guest, room):
         if room.count_guests() == room.capacity:
@@ -14,7 +17,7 @@ class Caraoke:
         else:
             room.add_guest(guest)
             guest.pay_entry(room)
-            room.add_money_to_till(room.entry_fee)
+            self.collect_entry_fee(room)
     
     def find_room(self, room):
         for suite in self._rooms:

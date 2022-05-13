@@ -56,8 +56,13 @@ class TestRoom(unittest.TestCase):
         self.room.count_guests()
         self.assertEqual(2, len(self.room._guests))
         
-  
-    
+    # def test_room_can_play_song(self):
+    #     self.room.add_song(self.song1)
+    #     self.room.add_song(self.song2)
+    #     self.room.add_guest(self.guest1)
+    #     self.guest1.add_fave_song(self.song1)
+    #     self.room.play_song(self.room._songs, self.room._guests)
+    #     self.assertEqual("OH YA DANCER", self.room.play_song())
   
     
     
